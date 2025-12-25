@@ -106,9 +106,9 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-black text-gray-900 dark:text-white relative`}
       >
-        <div style={{ width: '100%', height: '100vh', position: 'fixed', top: 0, left: 0, zIndex: 0 }}>
+        <div className="absolute inset-0 z-0">
           <PixelSnow
             color="#ffffff"
             flakeSize={0.01}
@@ -123,24 +123,24 @@ export default function RootLayout({
         <div className="relative z-10">
           <ErrorBoundary>
              <LayoutProvider>
-                <Suspense fallback={<div className="h-16 bg-black border-b border-gray-800"></div>}>
-                  <Header />
-                </Suspense>
-                <div className="flex min-h-screen pt-16">
-                  <Suspense fallback={<div className="w-64 bg-gray-900"></div>}>
-                    <Sidebar />
-                  </Suspense>
-                  <main className="flex-1">
-                    <div className="max-w-7xl mx-auto px-4 py-8">
-                      {children}
-                    </div>
-                  </main>
-                </div>
-                <Suspense fallback={<div className="bg-gray-900 border-t border-gray-800"></div>}>
-                  <Footer />
-                </Suspense>
-              </LayoutProvider>
-            </ErrorBoundary>
+               <Suspense fallback={<div className="h-16 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800"></div>}>
+                 <Header />
+               </Suspense>
+               <div className="flex min-h-screen pt-16">
+                 <Suspense fallback={<div className="w-64 bg-gray-100 dark:bg-gray-900"></div>}>
+                   <Sidebar />
+                 </Suspense>
+                 <main className="flex-1">
+                   <div className="max-w-7xl mx-auto px-4 py-8">
+                     {children}
+                   </div>
+                 </main>
+               </div>
+               <Suspense fallback={<div className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800"></div>}>
+                 <Footer />
+               </Suspense>
+             </LayoutProvider>
+           </ErrorBoundary>
         </div>
       </body>
     </html>

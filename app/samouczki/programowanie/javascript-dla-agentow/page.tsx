@@ -6,6 +6,7 @@ import { ArrowLeft, Clock, Code, Zap, Database, Globe } from "lucide-react";
 import CodeBlock from "@/components/CodeBlock";
 import InteractiveDemo from "@/components/InteractiveDemo";
 import ProgressIndicator from "@/components/ProgressIndicator";
+import PixelSnow from './PixelSnow';
 
 export default function JavaScriptDlaAgentowPage() {
   const demoSteps = [
@@ -207,7 +208,20 @@ agent.processNewOrder({
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="relative min-h-screen">
+      <div className="absolute inset-0 z-0">
+        <PixelSnow
+          color="#ffffff"
+          flakeSize={0.01}
+          minFlakeSize={1.25}
+          pixelResolution={200}
+          speed={1.25}
+          density={0.3}
+          direction={125}
+          brightness={1}
+        />
+      </div>
+      <div className="relative z-10 space-y-8">
       {/* Navigation */}
       <div className="flex items-center gap-4">
         <Link
@@ -926,6 +940,7 @@ testRequests.forEach(async (request) => {
           Następny Tutorial: Python dla AI →
         </Link>
       </motion.div>
+      </div>
     </div>
   );
 }
